@@ -1,0 +1,475 @@
+/* --------------------------------------------------
+   BASIC RESET + GLOBAL
+-------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f1116;
+    color: #dcdcdc;
+    font-family: "Poppins", sans-serif;
+}
+
+/* --------------------------------------------------
+   NAVBAR
+-------------------------------------------------- */
+.navbar {
+    width: 100%;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #10131a;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    color: #18ddcf;
+}
+
+.logo-icon {
+    color: #18ddcf;
+}
+
+.navbar nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 16px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #18ddcf;
+}
+
+/* Underline animation */
+.navbar nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #18ddcf;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* --------------------------------------------------
+   HERO SECTION LAYOUT
+-------------------------------------------------- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 140px 60px 50px;
+}
+
+/* LEFT TEXT */
+.hero-text {
+    max-width: 50%;
+}
+
+/* Name gradient with hover glow */
+.name-title {
+    font-size: 60px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #18ddcf, #0fb5aa);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 0.4s ease;
+}
+
+.name-title:hover {
+    filter: brightness(1.6);
+    text-shadow: 0 0 18px #18ddcf;
+}
+
+/* Role */
+.role {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #98f7f1;
+}
+
+/* Description */
+.desc {
+    margin: 18px 0;
+    line-height: 1.6;
+    max-width: 500px;
+    font-size: 16px;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.buttons {
+    display: flex;
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.btn-primary {
+    background: #18ddcf;
+    padding: 12px 22px;
+    color: #000;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #18ddcf;
+}
+
+.btn-outline {
+    border: 2px solid #18ddcf;
+    padding: 10px 22px;
+    color: #18ddcf;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #18ddcf;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #18ddcf;
+}
+
+/* --------------------------------------------------
+   SOCIAL ICONS
+-------------------------------------------------- */
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    margin-right: 18px;
+    font-size: 22px;
+    color: #18ddcf;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 12px #18ddcf, 0 0 24px #18ddcf;
+    transform: translateY(-4px);
+}
+
+/* --------------------------------------------------
+   PROFILE IMAGE + GLOW ANIMATION
+-------------------------------------------------- */
+.hero-image {
+    position: relative;
+}
+
+.img-glow {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 8px;
+    background: radial-gradient(circle, #18ddcf, #0c6e68);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    box-shadow: 0 0 20px #18ddcf;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-glow:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 40px #18ddcf, 0 0 80px #18ddcf;
+}
+
+.img-glow img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #0f1116;
+    transition: 0.4s;
+}
+
+.img-glow:hover img {
+    transform: scale(1.05);
+}
+
+/* Rotating glow ring */
+.img-glow::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    background: conic-gradient(#18ddcf, transparent, #18ddcf);
+    animation: rotateGlow 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------------------- */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 120px 20px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    .name-title {
+        font-size: 42px;
+    }
+
+    .role {
+        font-size: 22px;
+    }
+
+    .img-glow {
+        width: 250px;
+        height: 250px;
+    }
+
+    .img-glow img {
+        width: 220px;
+        height: 220px;
+    }
+}
+/* --------------------------------------------------
+   SKILLS SECTION
+-------------------------------------------------- */
+.skills {
+    padding: 80px 60px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 38px;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #18ddcf, #0fb5aa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background: #11171e;
+    padding: 25px 10px;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 1px solid #1a242f;
+}
+
+.skill-card i {
+    font-size: 40px;
+    color: #18ddcf;
+}
+
+.skill-card p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 18px #18ddcf;
+    border-color: #18ddcf;
+}
+
+/* --------------------------------------------------
+   PROJECTS SECTION
+-------------------------------------------------- */
+.projects {
+    padding: 80px 60px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+/* Card container */
+.project-card {
+    background: #11171e;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #1a242f;
+    transition: 0.3s;
+}
+
+/* Card hover glow */
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 22px #18ddcf;
+    border-color: #18ddcf;
+}
+
+/* Image wrapper */
+.project-img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+/* Zoom image on hover */
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.project-card:hover .project-img img {
+    transform: scale(1.1);
+}
+
+/* Text */
+.project-card h3 {
+    color: #18ddcf;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.project-card p {
+    color: #bbbbbb;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+/* Buttons inside projects */
+.project-links {
+    display: flex;
+    gap: 12px;
+}
+/* --------------------------------------------------
+   CONTACT SECTION
+-------------------------------------------------- */
+.contact {
+    padding: 80px 60px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* FORM STYLING */
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #11171e;
+    border: 1px solid #1a242f;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #18ddcf;
+    box-shadow: 0 0 12px #18ddcf;
+}
+
+.contact-btn {
+    width: fit-content;
+    padding: 12px 25px;
+    font-size: 16px;
+}
+
+/* INFO SIDE */
+.contact-info {
+    flex: 0.8;
+    min-width: 260px;
+}
+
+.contact-info h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #18ddcf;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    color: #b9b9b9;
+}
+
+.contact-socials a {
+    font-size: 26px;
+    margin-right: 15px;
+}
+
+@media (max-width: 850px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        margin-top: 20px;
+        text-align: left;
+    }
+}
+/* Reveal animation default state */
+.project-card, 
+.skill-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease;
+}
