@@ -607,6 +607,88 @@ body {
         display: flex !important;
     }
 }
+/* ===== HEADER SMOOTH ANIMATION ===== */
+
+.nav-links a{
+  color:#cfcfcf;
+  text-decoration:none;
+  margin-left:28px;
+  font-weight:500;
+  position:relative;
+  transition:all .35s cubic-bezier(.25,.8,.25,1);
+}
+
+/* smooth floating hover */
+.nav-links a:hover{
+  color:#18ddcf;
+  transform:translateY(-4px);
+}
+
+/* glow underline */
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:#18ddcf;
+  transition:width .35s ease;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+/* smooth click press */
+.nav-links a:active{
+  transform:translateY(-1px) scale(.92);
+}
+
+/* navbar smooth */
+.navbar{
+  transition:all .4s ease;
+}
+
+/* ===== FLIP CARD ===== */
+.flip-card{
+  perspective:1000px;
+}
+
+.flip-inner{
+  position:relative;
+  width:100%;
+  height:180px;
+  transform-style:preserve-3d;
+  transition:transform .7s;
+}
+
+.flip-card:hover .flip-inner{
+  transform:rotateY(180deg);
+}
+
+/* FRONT & BACK */
+.flip-front,
+.flip-back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.flip-front img,
+.flip-back img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* back side */
+.flip-back{
+  transform:rotateY(180deg);
+}
 
 /* ensure skills visible & reveal animation */
 .skills { display: block; }
@@ -1214,48 +1296,35 @@ body {
     gap: 32px;
 }
 
-.menu-toggle {
-    display: none;            /* hidden on desktop */
-    font-size: 28px;
-    color: #ffffff;
-    cursor: pointer;
-    z-index: 2001;
-    position: relative;
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  color:#18ddcf;
+  cursor:pointer;
 }
 
+@media(max-width:900px){
 
-/* =========================
-   MOBILE + TABLET NAV (≤ 900px)
-=========================== */
+  .menu-toggle{
+    display:block;
+  }
 
-@media (max-width: 900px) {
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#0f1116;
+    width:100%;
+    display:none;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    gap:20px;
+  }
 
-    /* Show hamburger icon */
-    .menu-toggle {
-        display: block !important;
-        z-index: 3001;
-    }
-
-    /* Hide nav links initially */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        flex-direction: column;
-        background: #0f1116;
-        text-align: center;
-        padding: 20px 0;
-        gap: 22px;
-        border-top: 1px solid #18ddcf55;
-        z-index: 3000;
-    }
-
-    /* When active → show links */
-    .nav-links.active {
-        display: flex !important;
-    }
+  .nav-links.active{
+    display:flex;
+  }
 }
 
 /* ensure skills visible & reveal animation */
